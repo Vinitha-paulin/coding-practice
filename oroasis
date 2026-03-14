@@ -1,0 +1,31 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        int[] a = new int[n];
+
+        int totalOR = 0;
+        for(int i=0;i<n;i++){
+            a[i]=sc.nextInt();
+            totalOR |= a[i];
+        }
+
+        int ans = n;
+
+        for(int i=0;i<n;i++){
+            int currOR = 0;
+            for(int j=i;j<n;j++){
+                currOR |= a[j];
+                if(currOR == totalOR){
+                    ans = Math.min(ans, j-i+1);
+                    break;
+                }
+            }
+        }
+
+        System.out.println(ans);
+    }
+}
