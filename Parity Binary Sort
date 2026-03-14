@@ -1,0 +1,30 @@
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+
+        int a = sc.nextInt();
+
+        while(T-- > 0){
+            int n = sc.nextInt();
+            Integer[] arr = new Integer[n];
+
+            for(int i=0;i<n;i++)
+                arr[i]=sc.nextInt();
+
+            Arrays.sort(arr,(a,b)->{
+                int pa = countBits(a)%2;
+                int pb = countBits(b)%2;
+
+                if(pa!=pb) return pa-pb;
+                return a-b;
+            });
+
+            for(int x:arr)
+                System.out.print(x+" ");
+            System.out.println();
+        }
+    }
+}
